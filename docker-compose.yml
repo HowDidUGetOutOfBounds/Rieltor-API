@@ -1,0 +1,27 @@
+services:
+  mysql:
+    image: 'mysql:latest'
+    environment:
+      - 'MYSQL_DATABASE=mydatabase'
+      - 'MYSQL_PASSWORD=secret'
+      - 'MYSQL_ROOT_PASSWORD=verysecret'
+      - 'MYSQL_USER=myuser'
+    ports:
+      - '3306:3306'
+    volumes:
+      - /home/mysql-data:/var/lib/mysql
+    networks:
+      my-network:
+
+  spring:
+    build:
+      context: out/artifacts
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+    networks:
+      my-network:
+
+networks:
+  my-network:
+
