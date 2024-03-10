@@ -18,9 +18,7 @@ class JsonWebTokenService (
     private val secret: String,
     @Value("\${jwt.lifetime}")
     private val jwtLifetime: Duration,
-
 ){
-
     fun generateToken(userDetails: UserDetails):String{
         val claims: MutableMap<String, Any?> = HashMap()
         val roleList = userDetails.authorities
@@ -39,6 +37,7 @@ class JsonWebTokenService (
             .compact()
         return jwt
     }
+    
     fun getEmail(token: String): String {
         return getAllClaimFromToken(token).subject
     }
