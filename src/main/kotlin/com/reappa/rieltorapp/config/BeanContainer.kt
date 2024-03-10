@@ -24,8 +24,4 @@ class BeanContainer(
         daoAuthenticationProvider.setUserDetailsService(accountService)
         return daoAuthenticationProvider
     }
-
-
-
-
 }
