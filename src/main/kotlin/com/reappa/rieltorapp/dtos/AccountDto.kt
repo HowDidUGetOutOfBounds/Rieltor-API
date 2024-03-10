@@ -8,6 +8,6 @@ import lombok.Data
 data class AccountDto(
     private val id: Long,
     private val email: String,
-){
+    ){
 
 }
