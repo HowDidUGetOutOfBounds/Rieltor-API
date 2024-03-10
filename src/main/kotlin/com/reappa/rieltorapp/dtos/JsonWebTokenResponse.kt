@@ -8,4 +8,5 @@ import lombok.Data
 data class JsonWebTokenResponse(
     private val token: String,
     ) {
+
 }
