@@ -9,16 +9,6 @@ import org.springframework.boot.runApplication
 
 @SpringBootApplication
 class RieltorAppApplication(
-//    @Autowired
-//    private val roleService: RoleService,
-) : CommandLineRunner {
-
-    override fun run(vararg args: String?) {
-//        roleService.createRole(RolesNamesValues.ROLE_RIELTOR.stringValue)
-//        roleService.createRole(RolesNamesValues.ROLE_CUSTOMER.stringValue)
-//        roleService.createRole(RolesNamesValues.ROLE_MODERATOR.stringValue)
-    }
-}
 
 fun main(args: Array<String>) {
     runApplication<RieltorAppApplication>(*args)
