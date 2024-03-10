@@ -3,6 +3,7 @@ package com.reappa.rieltorapp.exceptions
 import lombok.AllArgsConstructor
 import lombok.Data
 import java.util.Date
+
 @AllArgsConstructor
 @Data
 class AppError(
@@ -10,5 +11,4 @@ class AppError(
     private val message: String,
 ) {
     private val timestamp:Date= Date()
-
 }
