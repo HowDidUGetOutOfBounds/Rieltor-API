@@ -7,14 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.stereotype.Service
 
-
 @Service
 @RequiredArgsConstructor
 class RoleService (
     @Autowired
     private val roleRepository: RoleRepository
 ){
-
     fun findRoleByRoleName(roleName: String): Role {
         val role: Role? = roleRepository.findByRoleName(roleName)
         if (role != null) {
@@ -33,5 +31,4 @@ class RoleService (
     fun getAllRoles(): List<Role>{
         return roleRepository.findAll();
     }
-
 }
