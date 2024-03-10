@@ -26,7 +26,6 @@ import org.springframework.web.cors.CorsConfiguration
 @RequiredArgsConstructor
 @EnableGlobalMethodSecurity(securedEnabled = true)
 class WebSecurityConfiguration(
-
     @Autowired
     private val jsonWebTokenRequestFilter: JsonWebTokenRequestFilter,
 ) {
@@ -73,7 +72,6 @@ class WebSecurityConfiguration(
     fun passwordEncoder(): BCryptPasswordEncoder {
         return BCryptPasswordEncoder()
     }
-
 
     @Bean
     fun authenticationManager(authenticationConfiguration: AuthenticationConfiguration): AuthenticationManager {
