@@ -1,6 +1,5 @@
 package com.reappa.rieltorapp.controllers
 
-
 import com.reappa.rieltorapp.dtos.JsonWebTokenRequest
 import com.reappa.rieltorapp.dtos.JsonWebTokenResponse
 import com.reappa.rieltorapp.dtos.RegistrationDto
@@ -22,9 +21,9 @@ class AuthController(
     ){
     @RequestMapping(method = [RequestMethod.POST], path = ["/registerNewAccount"])
     fun registerNewAccount(@RequestBody registrationDto: RegistrationDto): ResponseEntity<*> {
-
         return authService.createUser(registrationDto)
     }
+    
     @RequestMapping(method = [RequestMethod.POST], path = ["/login"])
     fun createToken(@RequestBody authRequest: JsonWebTokenRequest?):ResponseEntity<String> {
         val responce = authService.createToken(authRequest)
