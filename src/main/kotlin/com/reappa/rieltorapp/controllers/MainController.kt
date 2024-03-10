@@ -12,23 +12,18 @@ import java.security.Principal
 @CrossOrigin
 @RequestMapping(path = ["/main"])
 class MainController {
-    @GetMapping("/unsecured")
+    @RequestMapping(method = [RequestMethod.GET], path = ["/unsecured"])
     fun unsecuredData(): String {
         return "unsecuredData"
     }
 
-    @GetMapping("/secured")
+    @RequestMapping(method = [RequestMethod.GET], path = ["/secured"])
     fun securedData(): String {
         return "securedData"
     }
 
-    @GetMapping("/admin")
+    @RequestMapping(method = [RequestMethod.GET], path = ["/admin"])
     fun adminData(): String {
         return "adminData"
-    }
-
-    @GetMapping("/info")
-    fun userData(principal: Principal): String {
-        return principal.name
     }
 }
