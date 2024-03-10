@@ -1,7 +1,5 @@
 package com.reappa.rieltorapp.services
 
-
-
 import com.reappa.rieltorapp.dtos.AccountDto
 import com.reappa.rieltorapp.dtos.JsonWebTokenRequest
 import com.reappa.rieltorapp.dtos.JsonWebTokenResponse
@@ -45,9 +43,7 @@ class AuthService(
                 UsernamePasswordAuthenticationToken(authRequest.email, authRequest.password)
             )
             val userDetails = accountService.loadUserByUsername(authRequest.email)
-
             val token = jsonWebTokenService.generateToken(userDetails)
-
             return ResponseEntity.ok(JsonWebTokenResponse(token))
         } catch (e: BadCredentialsException) {
             return ResponseEntity(
@@ -55,7 +51,6 @@ class AuthService(
                 HttpStatus.UNAUTHORIZED
             )
         }
-
     }
 
     fun createUser(@RequestBody registrationDto: RegistrationDto): ResponseEntity<*> {
@@ -71,13 +66,9 @@ class AuthService(
                 HttpStatus.BAD_REQUEST
             )
         }
-
         val role: Role = roleService.findRoleByRoleName(RolesNamesValues.ROLE_CUSTOMER.stringValue)
-
         val encodedPassword: String = passwordEncoder.encode(registrationDto.password)
         val accountFromDB = accountService.saveNewAccount(registrationDto.email, encodedPassword, role)
-
         return ResponseEntity.ok(accountFromDB.id?.let { AccountDto(it, accountFromDB.accountEmail) })
     }
-
 }
