@@ -2,7 +2,6 @@ package com.reappa.rieltorapp.config
 
 import com.reappa.rieltorapp.services.JsonWebTokenService
 import io.jsonwebtoken.ExpiredJwtException
-
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
@@ -18,7 +17,6 @@ import java.security.SignatureException
 
 @Component
 @RequiredArgsConstructor
-@Slf4j
 class JsonWebTokenRequestFilter (
     @Autowired
     private val jsonWebTokenService: JsonWebTokenService,
@@ -50,7 +48,6 @@ class JsonWebTokenRequestFilter (
                 }
             )
             SecurityContextHolder.getContext().authentication = token
-
         }
         filterChain.doFilter(request, response)
     }
