@@ -17,8 +17,7 @@ class AccountService (
     @Autowired
     val accountRepository: AccountRepository,
     ):UserDetailsService{
-    
-    @Transactional
+
     override fun loadUserByUsername(email: String): UserDetails {
      val account: Account? = accountRepository.findByAccountEmail(email)
         if (account != null) {
@@ -34,8 +33,7 @@ class AccountService (
         }
         return null
     }
-    
-    @Transactional
+
     fun saveNewAccount(
         email: String,
         encodedPassword: String,
@@ -47,5 +45,17 @@ class AccountService (
         }
         val account = Account(null, email, encodedPassword, listOf(role))
         return accountRepository.save(account)
+    }
+
+    fun updateAccount(
+        accountId: Long,
+        account: Account
+    ): Account{
+        var accountFromDB=accountRepository.findAccountById(accountId)
+        if (accountFromDB!=null){
+            accountFromDB=account
+            return accountRepository.save(accountFromDB)
+        }
+        throw RuntimeException("Account with id $accountId not found")
     }
 }

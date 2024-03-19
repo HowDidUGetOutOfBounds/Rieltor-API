@@ -30,7 +30,7 @@ data class Account(
         joinColumns = [JoinColumn(name = "accountId")],
         inverseJoinColumns = [JoinColumn(name = "roleId")]
     )
-    val authorities: List<Role>,
+    var authorities: List<Role>,
     @get:JvmName("getAccountIsEnabled")
     val isEnabled: Boolean = true,
     @get:JvmName("getAccountIsNonExpired")

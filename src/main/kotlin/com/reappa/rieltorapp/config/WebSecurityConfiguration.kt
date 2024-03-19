@@ -54,6 +54,7 @@ class WebSecurityConfiguration(
                     //TODO update endpoints
                     .requestMatchers("/auth/login").permitAll()
                     .requestMatchers("/auth/registerNewAccount").permitAll()
+                    .requestMatchers("/auth/registerRieltor").authenticated()
                     .requestMatchers("/swagger-ui/**", "/swagger-resources/*", "/v3/api-docs/**").permitAll()
                     .requestMatchers("/main/secured").authenticated()
                     .requestMatchers("/main/admin", "/admin/**").hasRole("MODERATOR")

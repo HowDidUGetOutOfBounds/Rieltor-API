@@ -4,7 +4,7 @@ import com.reappa.rieltorapp.models.Role
 import com.reappa.rieltorapp.repo.RoleRepository
 import lombok.RequiredArgsConstructor
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.context.annotation.Bean
+import org.springframework.security.core.GrantedAuthority
 import org.springframework.stereotype.Service
 
 @Service
@@ -30,5 +30,16 @@ class RoleService (
     }
     fun getAllRoles(): List<Role>{
         return roleRepository.findAll();
+    }
+    fun checkAuthority(
+        authorities: List<GrantedAuthority>,
+        checkFor: Role,
+        ):Boolean{
+        for(authority in authorities){
+            if (authority.authority.equals(checkFor.authority)){
+                return true
+            }
+        }
+        return false
     }
 }
